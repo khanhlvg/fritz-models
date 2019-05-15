@@ -144,7 +144,7 @@ class StyleTransferNetwork(object):
         Returns:
             out - a keras layer as output
         """
-        out = keras.layers.UpSampling2D(size=size)(x)
+        out = keras.layers.UpSampling2D(size=size, interpolation='bilinear')(x)
         # out = keras.layers.ZeroPadding2D(padding=(2, 2))(out)
         out = cls._convolution(out, n_filters, kernel_size, padding='same')
         return out
